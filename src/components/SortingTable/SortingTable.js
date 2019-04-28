@@ -2,7 +2,13 @@ import React, { Component } from "react";
 
 import bubbleSort from "../../utils/bubbleSort";
 import createRandomArr from "../../utils/createRandomArr";
-import { Table, TableItem, Input } from "./SortingTable-styled";
+import {
+  Table,
+  TableItem,
+  Input,
+  Title,
+  TableWrapper
+} from "./SortingTable-styled";
 
 let timeout;
 
@@ -63,8 +69,10 @@ class SortingTable extends Component {
 
   render() {
     const { array, size, interval } = this.state;
+    const { currentAlgorithm } = this.props;
     return (
-      <>
+      <TableWrapper>
+        <Title>{currentAlgorithm}</Title>
         <Table>{this.renderArray()}</Table>
         <button onClick={this.startBubbleSort}>Start bubble-sort</button>
         <div>Enter array size: </div>
@@ -83,7 +91,7 @@ class SortingTable extends Component {
           id="interval"
           value={interval}
         />
-      </>
+      </TableWrapper>
     );
   }
 }

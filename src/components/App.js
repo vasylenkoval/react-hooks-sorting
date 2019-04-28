@@ -3,7 +3,7 @@ import SortingTable from "./SortingTable/SortingTable";
 
 class App extends Component {
   state = {
-    currentAlgorithm: "bubblesort"
+    currentAlgorithm: "Bubble Sort"
   };
 
   changeAlgorithm = algorithm => {
