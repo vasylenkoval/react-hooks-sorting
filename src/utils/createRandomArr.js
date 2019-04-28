@@ -1,7 +1,7 @@
 const createRandomArr = size => {
   let arr = [];
   for (let i = 1; i <= size; i++) {
-    arr.push(i);
+    arr.push({ value: i, selected: false });
   }
   for (let i = 0; i < size; i++) {
     let randomIndex = Math.floor(Math.random() * size);

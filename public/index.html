@@ -29,13 +29,27 @@
 
     <!-- global styles below -->
     <style>
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
       body {
         background-color: rgb(20, 20, 20);
         font-family: "Lato", sans-serif;
         color: white;
+        margin: auto;
+        animation: fadein 1s;
       }
 
       html {
+        max-width: 1600px;
+        width: 90%;
+        margin: 0 auto;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
