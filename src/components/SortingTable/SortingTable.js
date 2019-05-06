@@ -8,9 +8,21 @@ import {
   Button
 } from "./SortingTable-styled";
 
-const SortingTable = ({ start, currentAlgorithm, size, array }) => {
+import { playSound } from "../../utils/sound";
+
+const SortingTable = ({
+  start,
+  currentAlgorithm,
+  array,
+  isSorting,
+  isSorted,
+  randomize
+}) => {
   const renderArray = () =>
-    array.map(({ value, selected }, index, arr) => {
+    array.map(({ value, selected, emitSound }, _, arr) => {
+      if (emitSound) {
+        playSound();
+      }
       return (
         <TableItem
           key={value}
@@ -25,7 +37,9 @@ const SortingTable = ({ start, currentAlgorithm, size, array }) => {
     <TableWrapper>
       <Title>{currentAlgorithm}</Title>
       <Table>{renderArray()}</Table>
-      <Button onClick={start}>Start</Button>
+      <Button disabled={isSorting} onClick={isSorted ? randomize : start}>
+        {isSorted ? "Randomize" : "Start"}
+      </Button>
     </TableWrapper>
   );
 };

@@ -10,14 +10,18 @@ const bubbleSort = array => {
         temp = arr[i];
         arr[i] = arr[i + 1];
 
-        //highlight current element
-        arr[i + 1] = { ...temp, selected: true };
+        //highlight current element and emit sound if in the correct spot
+        arr[i + 1] = {
+          ...temp,
+          selected: true,
+          emitSound: i + 2 === temp.value
+        };
 
         //save a snapshot to be rendered later
         sortingHistory.push([...arr]);
 
-        //turn highlight off after taking a snapshot
-        arr[i + 1] = { ...temp, selected: false };
+        //turn highlight and sound off after taking a snapshot
+        arr[i + 1] = { ...temp, selected: false, emitSound: false };
         swap = true;
       }
     }

@@ -14,10 +14,15 @@ export const Button = styled.button`
   color: white;
   font-weight: 300;
   background: transparent;
+  transition: background 0.1s, color 0.1s;
+
+  &:disabled {
+    background: white;
+    color: black;
+  }
 
   /* Enable hover only for desktop */
   @media (min-width: 1100px) {
-    transition: background 0.1s, color 0.1s;
     cursor: pointer;
     &:hover {
       background: white;
@@ -27,7 +32,7 @@ export const Button = styled.button`
 `;
 
 export const Title = styled.h1`
-  position: absolute;
+  position: fixed;
   top: 20px;
   font-weight: 300;
   font-size: 2rem;
@@ -38,14 +43,17 @@ export const Table = styled.div`
   margin: 0 auto;
   width: 80%;
   display: flex;
-  height: 80vh;
+  height: 69vh;
 `;
 
 export const TableItem = styled.div`
-  margin: 0 3px;
+  margin-right: 3px;
   margin-top: auto;
   height: ${props => (props.height ? props.height : "50%")};
   width: ${props => (props.width ? props.width : "10%")};
   background: linear-gradient(to bottom, rgb(140, 107, 255), rgb(13, 98, 218));
-  ${props => props.selected && "background: red;"}
+  ${props => props.selected && "background: rgb(156, 10, 0);"}
+  @media(max-width: 900px) {
+    margin-right: 2px;
+  }
 `;
