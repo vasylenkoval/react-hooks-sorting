@@ -1,4 +1,4 @@
-const bubbleSort = array => {
+export const bubbleSort = array => {
   let arr = [...array];
   let swap, temp, i;
   const len = arr.length;

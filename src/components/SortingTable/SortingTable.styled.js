@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const TableWrapper = styled.div`
-  position: relative;
-`;
-
 export const Button = styled.button`
   display: block;
   margin: 20px auto;
@@ -31,28 +27,37 @@ export const Button = styled.button`
   }
 `;
 
-export const Title = styled.h1`
-  position: fixed;
-  top: 20px;
-  font-weight: 300;
-  font-size: 2rem;
-  margin: 0;
-`;
-
 export const Table = styled.div`
-  margin: 0 auto;
-  width: 80%;
+  width: auto;
+  margin: 100px 30px 30px 150px;
   display: flex;
-  height: 69vh;
+  height: 80vh;
+  background-color: #27293d;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
 `;
 
 export const TableItem = styled.div`
-  margin-right: 3px;
+  margin-right: 4px;
+  border: 1px solid rgb(29, 119, 237);
+  border-radius: 1px 1px 0 0;
   margin-top: auto;
   height: ${props => (props.height ? props.height : "50%")};
   width: ${props => (props.width ? props.width : "10%")};
-  background: linear-gradient(to bottom, rgb(140, 107, 255), rgb(13, 98, 218));
-  ${props => props.selected && "background: rgb(156, 10, 0);"}
+  background: linear-gradient(
+    to bottom,
+    rgba(29, 119, 237, 0.6),
+    rgba(13, 98, 218, 0)
+  );
+  ${props =>
+    props.selected &&
+    `background: linear-gradient(
+    to bottom,
+    rgba(156, 10, 0, 1),
+    rgba(156, 10, 0, .5)
+  );
+  border: none;`}
   @media(max-width: 900px) {
     margin-right: 2px;
   }

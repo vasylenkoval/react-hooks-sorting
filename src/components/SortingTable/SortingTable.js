@@ -1,31 +1,24 @@
 import React from "react";
-
-import {
-  Table,
-  TableItem,
-  Title,
-  TableWrapper,
-  Button
-} from "./SortingTable-styled";
-
-import { playSound } from "../../utils/sound";
+import { Table, TableItem, Button } from "./SortingTable.styled";
+import { playSound } from "../../utils/sound/sound";
 
 const SortingTable = ({
   start,
-  currentAlgorithm,
   array,
   isSorting,
   isSorted,
-  randomize
+  randomize,
+  isMuted,
+  setIsMuted
 }) => {
   const renderArray = () =>
     array.map(({ value, selected, emitSound }, _, arr) => {
-      if (emitSound) {
+      if (emitSound && !isMuted) {
         playSound();
       }
       return (
         <TableItem
-          key={value}
+          // key={value}
           selected={selected}
           height={`${(value / arr.length) * 90}%`}
           width={`${100 / arr.length}%`}
@@ -34,13 +27,12 @@ const SortingTable = ({
     });
 
   return (
-    <TableWrapper>
-      <Title>{currentAlgorithm}</Title>
+    <>
       <Table>{renderArray()}</Table>
       <Button disabled={isSorting} onClick={isSorted ? randomize : start}>
         {isSorted ? "Randomize" : "Start"}
       </Button>
-    </TableWrapper>
+    </>
   );
 };
 
