@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { MenuBody, Icons } from "./Menu.styled";
+import useExpandedTabs from "../../utils/hooks/useExpandedTabs";
 import ExpandedMenu from "./ExpandedMenu";
 const Menu = ({
   start,
@@ -10,26 +11,41 @@ const Menu = ({
   isSorted,
   isMuted
 }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [isExpanded, currentTab, toggleTab, closeTab] = useExpandedTabs();
 
+  //Switching between Play, Stop and Shuffle buttons
   const renderPlayControls = () => {
     if (isSorting) return <Icons.Stop onClick={stop} />;
     if (isSorted) return <Icons.Shuffle onClick={randomize} />;
-    else return <Icons.Play onClick={start} />;
+    else
+      return (
+        <Icons.Play
+          onClick={() => {
+            start();
+            closeTab();
+          }}
+        />
+      );
   };
 
+  //Switching between Muted and Unmuted buttons
   const renderSoundControls = () => {
     if (isMuted) return <Icons.SoundOff onClick={() => mute(false)} />;
     else return <Icons.SoundOn onClick={() => mute(true)} />;
   };
 
   return (
-    <MenuBody expanded={expanded}>
+    <MenuBody
+      isExpanded={isExpanded}
+      //setting tab index to enable onBlur
+      tabIndex="1"
+      onBlur={closeTab}
+    >
       {renderPlayControls()}
-      <Icons.Options onClick={() => setExpanded(!expanded)} />
+      <Icons.Options onClick={() => toggleTab("Sorting Options")} />
       {renderSoundControls()}
-      <Icons.ColorPicker />
-      <ExpandedMenu expanded={expanded} />
+      <Icons.Customize onClick={() => toggleTab("Customize")} />
+      <ExpandedMenu isExpanded={isExpanded} tabName={currentTab} />
     </MenuBody>
   );
 };

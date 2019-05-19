@@ -9,6 +9,21 @@ export const ExpandedMenuBody = styled.div`
   transition: width 0.15s ease-out, right 0.15s ease-out;
   position: fixed;
   border-radius: 0 5px 5px 0;
-  ${({ expanded }) => !expanded && "right: 90%;"}
-  box-shadow: 11px 0 15px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 25px 0 20px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  white-space: nowrap;
+  ${({ isExpanded }) => !isExpanded && "right: 90%; box-shadow: none;"}
+`;
+
+export const ExpandedTitle = styled.h3`
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  font-weight: 300;
+  top: 15px;
+  left: 30px;
+`;
+
+export const ExpandedContent = styled.div`
+  padding: 30px;
 `;
