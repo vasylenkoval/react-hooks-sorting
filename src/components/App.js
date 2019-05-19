@@ -20,7 +20,7 @@ const App = () => {
   };
 
   const stopSorting = () => {
-    // Set a fake timeout to get the highest timeout id
+    // Set a fake timeout to get the highest timeout id and clear all timeouts that come before
     let timeoutId = setTimeout(() => null, 0);
     while (timeoutId >= 0) {
       clearTimeout(timeoutId);
@@ -49,6 +49,7 @@ const App = () => {
 
   return (
     <>
+      <SortingTable currentAlgorithm={algorithm} array={currentArray} />
       <Menu
         start={startSorting}
         stop={stopSorting}
@@ -57,7 +58,6 @@ const App = () => {
         randomize={createArray}
         isMuted={isMuted}
       />
-      <SortingTable currentAlgorithm={algorithm} array={currentArray} />
     </>
   );
 };

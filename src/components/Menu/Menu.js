@@ -1,6 +1,8 @@
-import React from "react";
-import { MenuBody, Icons } from "./Menu.styled";
+import React, { useState } from "react";
+import { MenuBody, Icons, ExpandedMenu } from "./Menu.styled";
 const Menu = ({ start, stop, isSorting, isSorted, randomize }) => {
+  const [expanded, setExpanded] = useState(false);
+
   const renderPlayControls = () => {
     if (isSorting) return <Icons.Stop onClick={stop} />;
     if (isSorted) return <Icons.Shuffle onClick={randomize} />;
@@ -8,12 +10,13 @@ const Menu = ({ start, stop, isSorting, isSorted, randomize }) => {
   };
 
   return (
-    <MenuBody>
+    <MenuBody expanded={expanded}>
       {renderPlayControls()}
-      <Icons.Options />
+      <Icons.Options onClick={() => setExpanded(!expanded)} />
       <Icons.SoundOn />
       <Icons.SoundOff />
       <Icons.ColorPicker />
+      <ExpandedMenu expanded={expanded} />
     </MenuBody>
   );
 };

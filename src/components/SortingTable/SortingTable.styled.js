@@ -38,3 +38,21 @@ export const TableItem = styled.div`
     margin-right: 2px;
   }
 `;
+
+export const Title = styled.h3`
+  position: absolute;
+  color: grey;
+  font-size: 1.5rem;
+  font-weight: 300;
+  top: 15px;
+  left: 30px;
+`;
+
+export const AlgorithmName = styled.h2`
+  position: absolute;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 300;
+  top: 35px;
+  left: 30px;
+`;

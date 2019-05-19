@@ -49,9 +49,25 @@ export const MenuBody = styled.div`
   left: 2%;
   bottom: 5%;
   border-radius: 5px;
+  ${props => props.expanded && "border-radius: 5px 0 0 5px;"}
   background: linear-gradient(0deg, #3358f4, #1d8cf8);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   padding: 5% 2%;
+`;
+
+export const ExpandedMenu = styled.div`
+  background: linear-gradient(0deg, #2949c9, #1365b1);
+  top: 5%;
+  left: 10%;
+  bottom: 5%;
+  right: 60%;
+  transition: width 0.15s ease-out, right 0.15s ease-out;
+  position: fixed;
+  border-radius: 0 5px 5px 0;
+  ${({ expanded }) =>
+    expanded &&
+    "right: 90%;"} /* padding: 5% 2%; */
+  /* box-shadow: 11px 0 15px 10px rgba(0, 0, 0, 0.1);  */
 `;
