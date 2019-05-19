@@ -49,7 +49,11 @@ const App = () => {
 
   return (
     <>
-      <SortingTable currentAlgorithm={algorithm} array={currentArray} />
+      <SortingTable
+        currentAlgorithm={algorithm}
+        array={currentArray}
+        isMuted={isMuted}
+      />
       <Menu
         start={startSorting}
         stop={stopSorting}
@@ -57,6 +61,7 @@ const App = () => {
         isSorted={isSorted}
         randomize={createArray}
         isMuted={isMuted}
+        mute={setIsMuted}
       />
     </>
   );

@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { MenuBody, Icons, ExpandedMenu } from "./Menu.styled";
-const Menu = ({ start, stop, isSorting, isSorted, randomize }) => {
+import { MenuBody, Icons } from "./Menu.styled";
+import ExpandedMenu from "./ExpandedMenu";
+const Menu = ({
+  start,
+  stop,
+  mute,
+  randomize,
+  isSorting,
+  isSorted,
+  isMuted
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   const renderPlayControls = () => {
@@ -9,12 +18,16 @@ const Menu = ({ start, stop, isSorting, isSorted, randomize }) => {
     else return <Icons.Play onClick={start} />;
   };
 
+  const renderSoundControls = () => {
+    if (isMuted) return <Icons.SoundOff onClick={() => mute(false)} />;
+    else return <Icons.SoundOn onClick={() => mute(true)} />;
+  };
+
   return (
     <MenuBody expanded={expanded}>
       {renderPlayControls()}
       <Icons.Options onClick={() => setExpanded(!expanded)} />
-      <Icons.SoundOn />
-      <Icons.SoundOff />
+      {renderSoundControls()}
       <Icons.ColorPicker />
       <ExpandedMenu expanded={expanded} />
     </MenuBody>

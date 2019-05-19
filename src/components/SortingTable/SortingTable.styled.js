@@ -19,15 +19,15 @@ export const TableItem = styled.div`
   border: 1px solid rgb(29, 119, 237);
   border-radius: 1px 1px 0 0;
   margin-top: auto;
-  height: ${props => (props.height ? props.height : "50%")};
-  width: ${props => (props.width ? props.width : "10%")};
+  height: ${({ height }) => (height ? height : "50%")};
+  width: ${({ width }) => (width ? width : "10%")};
   background: linear-gradient(
     to bottom,
     rgba(29, 119, 237, 0.6),
     rgba(13, 98, 218, 0)
   );
-  ${props =>
-    props.selected &&
+  ${({ selected }) =>
+    selected &&
     `background: linear-gradient(
     to bottom,
     rgba(156, 10, 0, 1),
