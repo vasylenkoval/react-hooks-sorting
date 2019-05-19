@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SortingTable from "./SortingTable/SortingTable";
-import useSorting from "../utils/hooks/useSorting";
+import useSorting from "utils/hooks/useSorting";
 import Menu from "./Menu/Menu";
 
 const App = () => {

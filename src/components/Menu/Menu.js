@@ -1,7 +1,13 @@
 import React from "react";
-import { MenuBody, Icons } from "./Menu.styled";
-import useExpandedTabs from "../../utils/hooks/useExpandedTabs";
-import ExpandedMenu from "./ExpandedMenu";
+import {
+  MenuBody,
+  Icons,
+  ExpandedMenu,
+  ExpandedTitle,
+  ExpandedContent
+} from "./Menu.styled";
+import SortingOptionsTab from "../Tabs/SortingOptionsTab";
+import useExpandedTabs from "utils/hooks/useExpandedTabs";
 const Menu = ({
   start,
   stop,
@@ -41,11 +47,19 @@ const Menu = ({
       tabIndex="1"
       onBlur={closeTab}
     >
+      {/* Menu Controls */}
       {renderPlayControls()}
       <Icons.Options onClick={() => toggleTab("Sorting Options")} />
       {renderSoundControls()}
       <Icons.Customize onClick={() => toggleTab("Customize")} />
-      <ExpandedMenu isExpanded={isExpanded} tabName={currentTab} />
+
+      {/* Expanded Menu */}
+      <ExpandedMenu isExpanded={isExpanded} tabName={currentTab}>
+        <ExpandedTitle>{currentTab}</ExpandedTitle>
+        <ExpandedContent>
+          <SortingOptionsTab />
+        </ExpandedContent>
+      </ExpandedMenu>
     </MenuBody>
   );
 };

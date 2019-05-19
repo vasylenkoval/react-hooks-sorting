@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { createRandomArr } from "../helpers";
-import sortingAlgorithms from "../sorting/sortingAlgorithms";
+import { createRandomArr } from "utils/helpers";
+import sortingAlgorithms from "utils/sorting/sortingAlgorithms";
 
 const useSorting = (arraySize, algorithm, playbackInterval) => {
   const [currentArray, setCurrentArray] = useState(createRandomArr(arraySize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
-  const [timeoutsCount, setTimeoutsCount] = useState(0);
 
   // Creates a new shuffled array with provided array size
   const createArray = () => {
