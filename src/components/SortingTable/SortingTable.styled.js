@@ -1,37 +1,13 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
-  display: block;
-  margin: 20px auto;
-  border: 1px solid white;
-  padding: 10px 20px;
-  border-radius: 5%;
-  font-size: 1.4rem;
-  color: white;
-  font-weight: 300;
-  background: transparent;
-  transition: background 0.1s, color 0.1s;
-
-  &:disabled {
-    background: white;
-    color: black;
-  }
-
-  /* Enable hover only for desktop */
-  @media (min-width: 1100px) {
-    cursor: pointer;
-    &:hover {
-      background: white;
-      color: black;
-    }
-  }
-`;
-
 export const Table = styled.div`
   width: auto;
-  margin: 100px 30px 30px 150px;
   display: flex;
-  height: 80vh;
+  position: fixed;
+  left: 11.5%;
+  right: 2%;
+  top: 5%;
+  bottom: 5%;
   background-color: #27293d;
   padding: 30px;
   border-radius: 5px;
