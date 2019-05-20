@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Table, TableItem, Title, AlgorithmName } from "./SortingTable.styled";
 import { playSound } from "utils/sound/sound";
+import SortingContext from "context/Sorting";
 
-const SortingTable = ({ array, isMuted, currentAlgorithm }) => {
+const SortingTable = () => {
+  const { sorting, values } = useContext(SortingContext);
+
   const renderArray = () =>
-    array.map(({ value, selected, emitSound }) => {
-      if (emitSound && !isMuted) {
+    sorting.currentArray.map(({ value, selected, emitSound }, _, index) => {
+      if (emitSound && !values.isMuted) {
         playSound();
       }
       return (
         <TableItem
-          key={value}
+          key={index}
           selected={selected}
-          height={`${(value / array.length) * 90}%`}
-          width={`${100 / array.length}%`}
+          height={`${(value / sorting.currentArray.length) * 90}%`}
+          width={`${100 / sorting.currentArray.length}%`}
         />
       );
     });
@@ -21,7 +24,7 @@ const SortingTable = ({ array, isMuted, currentAlgorithm }) => {
   return (
     <Table>
       <Title>Sorting algorithm:</Title>
-      <AlgorithmName>{currentAlgorithm}</AlgorithmName>
+      <AlgorithmName>{values.algorithm}</AlgorithmName>
       {renderArray()}
     </Table>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   MenuBody,
   Icons,
@@ -8,29 +8,22 @@ import {
   Backdrop
 } from "./Menu.styled";
 import SortingOptionsTab from "../Tabs/SortingOptionsTab";
-import { Select } from "styles/reusableStyles";
+import SortingContext from "context/Sorting";
 import useExpandedTabs from "utils/hooks/useExpandedTabs";
 
-const Menu = ({
-  start,
-  stop,
-  mute,
-  randomize,
-  isSorting,
-  isSorted,
-  isMuted
-}) => {
+const Menu = () => {
+  const { sorting, values, handlers } = useContext(SortingContext);
   const [isExpanded, currentTab, toggleTab, closeTab] = useExpandedTabs();
 
   //Switching between Play, Stop and Shuffle buttons
   const renderPlayControls = () => {
-    if (isSorting) return <Icons.Stop onClick={stop} />;
-    if (isSorted) return <Icons.Shuffle onClick={randomize} />;
+    if (sorting.isSorting) return <Icons.Stop onClick={sorting.stop} />;
+    if (sorting.isSorted) return <Icons.Shuffle onClick={sorting.randomize} />;
     else
       return (
         <Icons.Play
           onClick={() => {
-            start();
+            sorting.start();
             closeTab();
           }}
         />
@@ -39,28 +32,32 @@ const Menu = ({
 
   //Switching between Muted and Unmuted buttons
   const renderSoundControls = () => {
-    if (isMuted) return <Icons.SoundOff onClick={() => mute(false)} />;
-    else return <Icons.SoundOn onClick={() => mute(true)} />;
+    if (values.isMuted)
+      return <Icons.SoundOff onClick={() => handlers.setIsMuted(false)} />;
+    else return <Icons.SoundOn onClick={() => handlers.setIsMuted(true)} />;
   };
 
   return (
     <>
+      {/* Backdrop for the expanded menu */}
       {isExpanded && <Backdrop onClick={closeTab} />}
+
+      {/* Main menu */}
       <MenuBody isExpanded={isExpanded}>
-        {/* Menu Controls */}
         {renderPlayControls()}
         <Icons.Options onClick={() => toggleTab("Sorting Options")} />
         {renderSoundControls()}
         <Icons.Customize onClick={() => toggleTab("Customize")} />
-
-        {/* Expanded Menu */}
-        <ExpandedMenu isExpanded={isExpanded}>
-          <ExpandedTitle>{currentTab}</ExpandedTitle>
-          <ExpandedContent>
-            <SortingOptionsTab />
-          </ExpandedContent>
-        </ExpandedMenu>
+        <Icons.Contact onClick={() => toggleTab("Contact Me")} />
       </MenuBody>
+
+      {/* Expanded Menu*/}
+      <ExpandedMenu isExpanded={isExpanded}>
+        <ExpandedTitle>{currentTab}</ExpandedTitle>
+        <ExpandedContent>
+          <SortingOptionsTab />
+        </ExpandedContent>
+      </ExpandedMenu>
     </>
   );
 };

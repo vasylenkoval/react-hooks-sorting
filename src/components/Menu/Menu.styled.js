@@ -7,7 +7,7 @@ import {
   MdEqualizer,
   MdMic,
   MdMicOff,
-  MdContacts
+  MdPermIdentity
 } from "react-icons/md";
 import { styleIcons } from "utils/helpers";
 
@@ -44,7 +44,7 @@ export const Icons = styleIcons(
     MdMic,
     MdMicOff,
     MdColorLens,
-    MdContacts
+    MdPermIdentity
   ],
   [
     "Play",
