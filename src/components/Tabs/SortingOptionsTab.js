@@ -2,7 +2,11 @@ import React from "react";
 import { Select } from "styles/reusableStyles";
 
 const SortingOptionsTab = () => {
-  return <></>;
+  return (
+    <>
+      <Select />
+    </>
+  );
 };
 
 export default SortingOptionsTab;

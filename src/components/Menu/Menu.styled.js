@@ -62,6 +62,7 @@ export const Icons = styleIcons(
 
 export const MenuBody = styled.div`
   position: fixed;
+  z-index: 0;
   top: 5%;
   right: 90%;
   left: 2%;
@@ -75,6 +76,7 @@ export const MenuBody = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   padding: 5% 2%;
+  outline: none;
 `;
 
 export const ExpandedMenu = styled.div`
@@ -103,4 +105,14 @@ export const ExpandedTitle = styled.h3`
 
 export const ExpandedContent = styled.div`
   padding: 60px 30px 30px 30px;
+`;
+
+export const Backdrop = styled.div`
+  background: rgba(0, 0, 0, 0.3);
+  animation: fadein 0.7s;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;

@@ -4,10 +4,13 @@ import {
   Icons,
   ExpandedMenu,
   ExpandedTitle,
-  ExpandedContent
+  ExpandedContent,
+  Backdrop
 } from "./Menu.styled";
 import SortingOptionsTab from "../Tabs/SortingOptionsTab";
+import { Select } from "styles/reusableStyles";
 import useExpandedTabs from "utils/hooks/useExpandedTabs";
+
 const Menu = ({
   start,
   stop,
@@ -41,26 +44,24 @@ const Menu = ({
   };
 
   return (
-    <MenuBody
-      isExpanded={isExpanded}
-      //setting tab index to enable onBlur
-      tabIndex="1"
-      onBlur={closeTab}
-    >
-      {/* Menu Controls */}
-      {renderPlayControls()}
-      <Icons.Options onClick={() => toggleTab("Sorting Options")} />
-      {renderSoundControls()}
-      <Icons.Customize onClick={() => toggleTab("Customize")} />
+    <>
+      {isExpanded && <Backdrop onClick={closeTab} />}
+      <MenuBody isExpanded={isExpanded}>
+        {/* Menu Controls */}
+        {renderPlayControls()}
+        <Icons.Options onClick={() => toggleTab("Sorting Options")} />
+        {renderSoundControls()}
+        <Icons.Customize onClick={() => toggleTab("Customize")} />
 
-      {/* Expanded Menu */}
-      <ExpandedMenu isExpanded={isExpanded} tabName={currentTab}>
-        <ExpandedTitle>{currentTab}</ExpandedTitle>
-        <ExpandedContent>
-          <SortingOptionsTab />
-        </ExpandedContent>
-      </ExpandedMenu>
-    </MenuBody>
+        {/* Expanded Menu */}
+        <ExpandedMenu isExpanded={isExpanded}>
+          <ExpandedTitle>{currentTab}</ExpandedTitle>
+          <ExpandedContent>
+            <SortingOptionsTab />
+          </ExpandedContent>
+        </ExpandedMenu>
+      </MenuBody>
+    </>
   );
 };
 

@@ -23,14 +23,8 @@ const GlobalStyles = createGlobalStyle`
     color: white;
     margin: auto;
     animation: fadein 1s;
-    /* color:rgb(156, 10, 0) */
     color: rgba(39, 41, 61, 0.829);
   }
-
-  *:focus {
-    outline: none;
-    }
-
 `;
 
 export default GlobalStyles;
