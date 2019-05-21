@@ -6,20 +6,17 @@ import Menu from "./Menu/Menu";
 
 const App = () => {
   const [algorithm, setAlgorithm] = useState("Bubble Sort");
-  const [arraySize, setArraySize] = useState(30);
+  const [arraySize, setArraySize] = useState(25);
   const [isMuted, setIsMuted] = useState(false);
-  const [interval, setInterval] = useState(25);
+  const [interval, setInterval] = useState(50);
 
-  //Organizing logic into three
+  //Organizing logic into three parts
   const sorting = useSorting(arraySize, algorithm, interval);
   const values = { algorithm, arraySize, isMuted, interval };
   const handlers = { setAlgorithm, setArraySize, setIsMuted, setInterval };
 
-  //Preventing context provider from creating a new value on each re-render
-  const [sortingContextValue] = useState({ sorting, values, handlers });
-
   return (
-    <SortingContext.Provider value={sortingContextValue}>
+    <SortingContext.Provider value={{ sorting, values, handlers }}>
       <SortingTable />
       <Menu />
     </SortingContext.Provider>

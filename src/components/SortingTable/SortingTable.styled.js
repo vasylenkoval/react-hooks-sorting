@@ -33,8 +33,9 @@ export const TableItem = styled.div`
     rgba(156, 10, 0, 1),
     rgba(156, 10, 0, .5)
   );
-  border: none;`}
-  @media(max-width: 900px) {
+  border: none;
+  `}
+  @media (max-width: 900px) {
     margin-right: 2px;
   }
 `;

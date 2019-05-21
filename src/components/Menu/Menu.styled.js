@@ -5,8 +5,8 @@ import {
   MdLoop,
   MdStop,
   MdEqualizer,
-  MdMic,
-  MdMicOff,
+  MdVolumeUp,
+  MdVolumeOff,
   MdPermIdentity
 } from "react-icons/md";
 import { styleIcons } from "utils/helpers";
@@ -41,8 +41,8 @@ export const Icons = styleIcons(
     MdLoop,
     MdStop,
     MdEqualizer,
-    MdMic,
-    MdMicOff,
+    MdVolumeUp,
+    MdVolumeOff,
     MdColorLens,
     MdPermIdentity
   ],
@@ -104,11 +104,11 @@ export const ExpandedTitle = styled.h3`
 `;
 
 export const ExpandedContent = styled.div`
-  padding: 60px 30px 30px 30px;
+  padding: 80px 30px 30px 30px;
 `;
 
 export const Backdrop = styled.div`
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.45);
   animation: fadein 0.7s;
   position: fixed;
   top: 0;
