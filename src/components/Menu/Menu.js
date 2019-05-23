@@ -12,18 +12,26 @@ import SortingContext from "context/Sorting";
 import useExpandedTabs from "utils/hooks/useExpandedTabs";
 
 const Menu = () => {
-  const { sorting, values, handlers } = useContext(SortingContext);
+  const { array, actions, config } = useContext(SortingContext);
   const [isExpanded, currentTab, toggleTab, closeTab] = useExpandedTabs();
 
   //Switching between Play, Stop and Shuffle buttons
   const renderPlayControls = () => {
-    if (sorting.isSorting) return <Icons.Stop onClick={sorting.stop} />;
-    if (sorting.isSorted) return <Icons.Shuffle onClick={sorting.randomize} />;
+    if (array.isSorted) return <Icons.Shuffle onClick={actions.shuffle} />;
+    if (array.isSorting)
+      return (
+        <Icons.Stop
+          onClick={() => {
+            actions.stop();
+            actions.shuffle();
+          }}
+        />
+      );
     else
       return (
         <Icons.Play
           onClick={() => {
-            sorting.start();
+            actions.start();
             closeTab();
           }}
         />
@@ -32,9 +40,9 @@ const Menu = () => {
 
   //Switching between Muted and Unmuted buttons
   const renderSoundControls = () => {
-    if (values.isMuted)
-      return <Icons.SoundOff onClick={() => handlers.setIsMuted(false)} />;
-    else return <Icons.SoundOn onClick={() => handlers.setIsMuted(true)} />;
+    if (config.isMuted)
+      return <Icons.SoundOff onClick={() => config.setIsMuted(false)} />;
+    else return <Icons.SoundOn onClick={() => config.setIsMuted(true)} />;
   };
 
   return (

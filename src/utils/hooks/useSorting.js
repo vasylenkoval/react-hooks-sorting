@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createRandomArr } from "utils/helpers";
 import sortingAlgorithms from "utils/sorting/sortingAlgorithms";
 
-const useSorting = (arraySize, algorithm, interval) => {
+const useSorting = () => {
+  const [algorithm, setAlgorithm] = useState("Bubble Sort");
+  const [arraySize, setArraySize] = useState(25);
+  const [interval, setSortingInterval] = useState(200);
   const [currentArray, setCurrentArray] = useState(createRandomArr(arraySize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
 
-  // Creates a new shuffled array with provided array size
-  const randomize = () => {
+  // Shuffles the array
+  const shuffle = useCallback(() => {
     setCurrentArray(createRandomArr(arraySize));
     setIsSorted(false);
-  };
+  }, [arraySize]);
+
+  //Shuffles the array if user triggered arraySize change
+  useEffect(() => {
+    shuffle();
+  }, [arraySize, shuffle]);
 
   const stop = () => {
     // set a fake timeout to get the highest timeout id and clear all timeouts that come before
@@ -22,7 +31,6 @@ const useSorting = (arraySize, algorithm, interval) => {
     }
     //stop sorting and create new shuffled array
     setIsSorting(false);
-    randomize();
   };
 
   //Starts sorting based on provided algorithm and playback interval
@@ -43,12 +51,26 @@ const useSorting = (arraySize, algorithm, interval) => {
   };
 
   return {
-    currentArray,
-    isSorting,
-    isSorted,
-    randomize,
-    start,
-    stop
+    array: {
+      currentArray,
+      isSorting,
+      isSorted
+    },
+    actions: {
+      shuffle,
+      start,
+      stop
+    },
+    config: {
+      algorithm,
+      setAlgorithm,
+      arraySize,
+      setArraySize,
+      interval,
+      setSortingInterval,
+      isMuted,
+      setIsMuted
+    }
   };
 };
 
