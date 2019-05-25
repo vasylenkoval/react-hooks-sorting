@@ -14,7 +14,8 @@ export const bubbleSort = array => {
         arr[i + 1] = {
           ...temp,
           selected: true,
-          emitSound: i + 2 === temp.value
+          emitSound: i + 2 === temp.value,
+          transition: false
         };
 
         //save a snapshot to be rendered later
@@ -23,6 +24,24 @@ export const bubbleSort = array => {
         //turn highlight and sound off after taking a snapshot
         arr[i + 1] = { ...temp, selected: false, emitSound: false };
         swap = true;
+      } else {
+        //highlight current element and emit sound if in the correct spot
+        arr[i] = {
+          ...arr[i],
+          selected: true,
+          transition: true
+        };
+
+        //save a snapshot to be rendered later
+        sortingHistory.push([...arr]);
+
+        //turn highlight and sound off after taking a snapshot
+        arr[i] = {
+          ...arr[i],
+          transition: false,
+          selected: false,
+          emitSound: false
+        };
       }
     }
   } while (swap);

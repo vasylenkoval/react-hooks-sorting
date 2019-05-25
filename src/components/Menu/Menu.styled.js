@@ -90,6 +90,7 @@ export const ExpandedMenu = styled.div`
   border-radius: 0 5px 5px 0;
   box-shadow: 25px 0 20px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  overflow-y: scroll;
   white-space: nowrap;
   ${({ isExpanded }) => !isExpanded && "right: 90%; box-shadow: none;"}
 `;

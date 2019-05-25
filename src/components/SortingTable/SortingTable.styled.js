@@ -19,21 +19,18 @@ export const Bar = styled.div`
   border: 1px solid rgb(29, 119, 237);
   border-radius: 1px 1px 0 0;
   margin-top: auto;
+  transition: ${({ transition }) => transition && "background-color .6s"};
   height: ${({ height }) => (height ? height : "50%")};
   width: ${({ width }) => (width ? width : "10%")};
   background: linear-gradient(
     to bottom,
-    ${({ topColor }) => topColor},
-    rgba(13, 98, 218, 0)
+    ${({ barTopColor }) => barTopColor},
+    ${({ barBottomColor }) => barBottomColor}
   );
   ${({ selected }) =>
     selected &&
-    `background: linear-gradient(
-    to bottom,
-    rgba(156, 10, 0, 1),
-    rgba(156, 10, 0, .5)
-  );
-  border: none;
+    `background: red;
+    border: none;
   `}
   @media (max-width: 900px) {
     margin-right: 2px;

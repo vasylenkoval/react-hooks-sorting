@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Select, Label } from "styles/reusableStyles";
+import { Select, Label, Button } from "styles/reusableStyles";
 import SortingContext from "context/Sorting";
 
-const SortingOptionsTab = () => {
+const SortingOptionsTab = ({ closeTab }) => {
   const { config, array, actions } = useContext(SortingContext);
 
   //Internal state with default values from context
@@ -31,18 +31,16 @@ const SortingOptionsTab = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (array.isSorting) {
+      actions.stop();
+      actions.shuffle();
+    }
 
     config.setAlgorithm(algorithm);
     config.setArraySize(arraySize);
     config.setSortingInterval(interval);
     setIsModified(false);
-
-    if (array.isSorting) {
-      actions.stop();
-    }
-    if (arraySize !== config.arraySize) {
-      actions.shuffle();
-    }
+    closeTab();
   };
 
   const renderAlgorithmSelect = () => (
@@ -97,8 +95,10 @@ const SortingOptionsTab = () => {
       {renderAlgorithmSelect()}
       {renderCountSelect()}
       {renderIntervalSelect()}
-      <button disabled={!isModified}>Save</button>
-      {isModified && "Not Saved"}
+      <div style={{ textAlign: "right" }}>
+        {isModified && "Not Saved"}
+        <Button disabled={!isModified}>Apply</Button>
+      </div>
     </form>
   );
 };

@@ -32,3 +32,23 @@ export const Label = styled.label`
   margin-bottom: 20px;
   display: block;
 `;
+
+export const Button = styled.button`
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  padding: 13px 25px;
+  border: 1px solid blue;
+  background: #0d268b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  &:hover {
+    background: #0d268b;
+  }
+  &:disabled {
+    background: lightgrey;
+  }
+`;

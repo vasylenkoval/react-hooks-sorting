@@ -7,12 +7,11 @@ import SortingContext from "context/Sorting";
 import Menu from "./Menu/Menu";
 
 const App = () => {
-  //Organizing logic into three parts
   const { array, actions, config } = useSorting();
-  const { theme } = useTheme();
+  const { colors, handlers } = useTheme();
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext.Provider value={{ colors, handlers }}>
       <SortingContext.Provider value={{ array, actions, config }}>
         <SortingTable />
         <Menu />

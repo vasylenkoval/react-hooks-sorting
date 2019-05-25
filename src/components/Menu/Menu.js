@@ -8,12 +8,13 @@ import {
   Backdrop
 } from "./Menu.styled";
 import SortingOptionsTab from "../Tabs/SortingOptionsTab";
+import CustomizeTab from "../Tabs/CustomizeTab";
 import SortingContext from "context/Sorting";
 import useExpandedTabs from "utils/hooks/useExpandedTabs";
 
 const Menu = () => {
   const { array, actions, config } = useContext(SortingContext);
-  const [isExpanded, currentTab, toggleTab, closeTab] = useExpandedTabs();
+  const { isExpanded, currentTab, toggleTab, closeTab } = useExpandedTabs();
 
   //Switching between Play, Stop and Shuffle buttons
   const renderPlayControls = () => {
@@ -45,6 +46,16 @@ const Menu = () => {
     else return <Icons.SoundOn onClick={() => config.setIsMuted(true)} />;
   };
 
+  //Showing a correct tab
+  const renderTabs = tab => {
+    return (
+      <ExpandedContent>
+        {tab === "Sorting Options" && <SortingOptionsTab closeTab={closeTab} />}
+        {tab === "Customize" && <CustomizeTab closeTab={closeTab} />}
+      </ExpandedContent>
+    );
+  };
+
   return (
     <>
       {/* Backdrop for the expanded menu */}
@@ -62,9 +73,7 @@ const Menu = () => {
       {/* Expanded Menu*/}
       <ExpandedMenu isExpanded={isExpanded}>
         <ExpandedTitle>{currentTab}</ExpandedTitle>
-        <ExpandedContent>
-          <SortingOptionsTab />
-        </ExpandedContent>
+        {renderTabs(currentTab)}
       </ExpandedMenu>
     </>
   );
