@@ -25,8 +25,7 @@ const SortingTable = () => {
               barTopColor={colors.barTop}
               barBottomColor={colors.barBottom}
               barBorderColor={colors.barBorder}
-              selectedTopColor={colors.selectedTop}
-              selectedBottomColor={colors.selectedBottom}
+              selectedColor={colors.selectedBar}
               transition={transition}
             />
           </Flipped>

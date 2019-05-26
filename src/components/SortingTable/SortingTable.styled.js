@@ -16,7 +16,7 @@ export const Table = styled.div`
 
 export const Bar = styled.div`
   margin-right: 4px;
-  border: 1px solid rgb(29, 119, 237);
+  border: 1px solid ${({ barBorderColor }) => barBorderColor};
   border-radius: 1px 1px 0 0;
   margin-top: auto;
   transition: ${({ transition }) => transition && "background-color .6s"};
@@ -27,9 +27,9 @@ export const Bar = styled.div`
     ${({ barTopColor }) => barTopColor},
     ${({ barBottomColor }) => barBottomColor}
   );
-  ${({ selected }) =>
+  ${({ selected, selectedColor }) =>
     selected &&
-    `background: red;
+    `background: ${selectedColor};
     border: none;
   `}
   @media (max-width: 900px) {

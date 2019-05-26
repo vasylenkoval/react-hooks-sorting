@@ -17,12 +17,7 @@ const useSorting = () => {
     setIsSorted(false);
   }, [arraySize]);
 
-  //Shuffles the array if user triggered arraySize change
-  useEffect(() => {
-    shuffle();
-  }, [arraySize, shuffle]);
-
-  const stop = () => {
+  const stop = useCallback(() => {
     // set a fake timeout to get the highest timeout id and clear all timeouts that come before
     let timeoutId = setTimeout(() => null, 0);
     while (timeoutId >= 0) {
@@ -31,7 +26,13 @@ const useSorting = () => {
     }
     //stop sorting and create new shuffled array
     setIsSorting(false);
-  };
+  }, []);
+
+  //Stops and Shuffles the array if user triggered arraySize change
+  useEffect(() => {
+    stop();
+    shuffle();
+  }, [arraySize, interval, algorithm, shuffle, stop]);
 
   //Starts sorting based on provided algorithm and playback interval
   const start = () => {
