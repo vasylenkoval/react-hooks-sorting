@@ -2,14 +2,14 @@ import { useState, useEffect, useCallback } from "react";
 import { createRandomArr } from "utils/helpers";
 import sortingAlgorithms from "utils/sorting/sortingAlgorithms";
 
-const useSorting = () => {
-  const [algorithm, setAlgorithm] = useState("Selection Sort");
-  const [arraySize, setArraySize] = useState(25);
-  const [interval, setSortingInterval] = useState(200);
+const useSorting = defaults => {
+  const [algorithm, setAlgorithm] = useState(defaults.algorithm);
+  const [arraySize, setArraySize] = useState(defaults.arraySize);
+  const [interval, setSortingInterval] = useState(defaults.interval);
   const [currentArray, setCurrentArray] = useState(createRandomArr(arraySize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(defaults.isMuted);
   const [smoothAnimation, setSmoothAnimation] = useState(true);
 
   // Shuffles the array

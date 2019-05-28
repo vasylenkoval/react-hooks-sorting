@@ -78,6 +78,20 @@ export const MenuBody = styled.div`
   flex-wrap: wrap;
   padding: 5% 2%;
   outline: none;
+
+  /* Mobile Styles */
+  @media (max-width: 560px) {
+    top: 85%;
+    right: 2%;
+    bottom: 2%;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0;
+
+    ${({ isExpanded }) =>
+      isExpanded &&
+      "border-radius: 0 0 5px 5px ; transition: border-radius .1s;"}
+  }
 `;
 
 export const ExpandedMenu = styled.div`
@@ -86,14 +100,27 @@ export const ExpandedMenu = styled.div`
   left: 10%;
   bottom: 5%;
   right: 60%;
-  transition: width 0.15s ease-out, right 0.15s ease-out;
+  transition: right 0.15s ease-out;
   position: fixed;
   border-radius: 0 5px 5px 0;
   box-shadow: 25px 0 20px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   overflow-y: scroll;
   white-space: nowrap;
-  ${({ isExpanded }) => !isExpanded && "right: 90%; box-shadow: none;"}
+  ${({ isExpanded }) =>
+    isExpanded ? "min-width: 300px;" : "right: 90%; box-shadow: none;"}
+
+  /* Mobile Styles */
+  @media (max-width: 560px) {
+    top: 20%;
+    right: 2%;
+    left: 2%;
+    bottom: 15%;
+    border-radius: 5px 5px 0 0;
+    transition: top 0.15s ease-out;
+
+    ${({ isExpanded }) => (isExpanded ? "" : "top: 90%; box-shadow: none;")}
+  }
 `;
 
 export const ExpandedTitle = styled.h3`

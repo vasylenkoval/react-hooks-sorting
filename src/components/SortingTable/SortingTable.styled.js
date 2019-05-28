@@ -12,6 +12,13 @@ export const Table = styled.div`
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
+
+  /* Mobile Styles */
+  @media (max-width: 560px) {
+    bottom: 16.5%;
+    left: 2%;
+    top: 2%;
+  }
 `;
 
 export const Bar = styled.div`
@@ -19,7 +26,7 @@ export const Bar = styled.div`
   border: 1px solid ${({ barBorderColor }) => barBorderColor};
   border-radius: 1px 1px 0 0;
   margin-top: auto;
-  transition: background-color 0.5s;
+  transition: background-color 0.2s;
   height: ${({ height }) => (height ? height : "50%")};
   width: ${({ width }) => (width ? width : "10%")};
   background: linear-gradient(

@@ -6,8 +6,15 @@ import ThemeContext from "context/Theme";
 import SortingContext from "context/Sorting";
 import Menu from "./Menu/Menu";
 
+const defaultValues = {
+  algorithm: "Insertion Sort",
+  arraySize: 25,
+  interval: 200,
+  isMuted: false
+};
+
 const App = () => {
-  const { array, actions, config } = useSorting();
+  const { array, actions, config } = useSorting(defaultValues);
   const { colors, handlers } = useTheme();
 
   return (
