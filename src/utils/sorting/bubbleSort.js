@@ -14,8 +14,7 @@ export const bubbleSort = array => {
         arr[i + 1] = {
           ...temp,
           selected: true,
-          emitSound: i + 2 === temp.value,
-          transition: false
+          emitSound: i + 2 === temp.value
         };
 
         //save a snapshot to be rendered later
@@ -26,22 +25,13 @@ export const bubbleSort = array => {
         swap = true;
       } else {
         //highlight current element and trigger transition if no swap happened
-        arr[i] = {
-          ...arr[i],
-          selected: true,
-          transition: true
-        };
+        arr[i] = { ...arr[i], selected: true };
 
         //save a snapshot to be rendered later
         sortingHistory.push([...arr]);
 
         //turn highlight and transition off after taking a snapshot
-        arr[i] = {
-          ...arr[i],
-          transition: false,
-          selected: false,
-          emitSound: false
-        };
+        arr[i] = { ...arr[i], selected: false, emitSound: false };
       }
     }
   } while (swap);

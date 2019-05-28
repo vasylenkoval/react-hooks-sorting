@@ -3,13 +3,14 @@ import { createRandomArr } from "utils/helpers";
 import sortingAlgorithms from "utils/sorting/sortingAlgorithms";
 
 const useSorting = () => {
-  const [algorithm, setAlgorithm] = useState("Bubble Sort");
+  const [algorithm, setAlgorithm] = useState("Insertion Sort");
   const [arraySize, setArraySize] = useState(25);
   const [interval, setSortingInterval] = useState(200);
   const [currentArray, setCurrentArray] = useState(createRandomArr(arraySize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [smoothAnimation, setSmoothAnimation] = useState(true);
 
   // Shuffles the array
   const shuffle = useCallback(() => {
@@ -70,7 +71,9 @@ const useSorting = () => {
       interval,
       setSortingInterval,
       isMuted,
-      setIsMuted
+      setIsMuted,
+      smoothAnimation,
+      setSmoothAnimation
     }
   };
 };

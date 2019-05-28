@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Table, Bar, Title, AlgorithmName } from "./SortingTable.styled";
 import { Flipper, Flipped } from "react-flip-toolkit";
 import { playSound } from "utils/sound/sound";
@@ -9,6 +9,8 @@ const SortingTable = () => {
   const { array, config } = useContext(SortingContext);
   const { colors } = useContext(ThemeContext);
 
+  const [isAnimating, setIsAnimating] = useState(config.smoothAnimation);
+
   const renderArray = () =>
     array.currentArray.map(
       ({ value, selected, emitSound, transition }, index) => {
@@ -16,9 +18,9 @@ const SortingTable = () => {
           playSound();
         }
         return (
-          <Flipped key={index} flipId={value}>
+          <Flipped key={index} flipId={value} shouldFlip={() => isAnimating}>
             <Bar
-              key={index}
+              key={value}
               selected={selected}
               height={`${(value / array.currentArray.length) * 90}%`}
               width={`${100 / array.currentArray.length}%`}
@@ -26,7 +28,6 @@ const SortingTable = () => {
               barBottomColor={colors.barBottom}
               barBorderColor={colors.barBorder}
               selectedColor={colors.selectedBar}
-              transition={transition}
             />
           </Flipped>
         );
@@ -34,8 +35,8 @@ const SortingTable = () => {
     );
 
   return (
-    <Flipper spring={"stiff"} flipKey={JSON.stringify(array.currentArray)}>
-      <Table>
+    <Flipper spring="stiff" flipKey={JSON.stringify(array.currentArray)}>
+      <Table onClick={() => setIsAnimating(!isAnimating)}>
         <Title>Sorting algorithm:</Title>
         <AlgorithmName>{config.algorithm}</AlgorithmName>
         {renderArray()}

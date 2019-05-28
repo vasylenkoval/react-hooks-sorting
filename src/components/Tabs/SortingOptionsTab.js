@@ -3,14 +3,13 @@ import { Select, Label, Button } from "styles/reusableStyles";
 import SortingContext from "context/Sorting";
 
 const SortingOptionsTab = ({ closeTab }) => {
-  const { config, array, actions } = useContext(SortingContext);
+  const { config } = useContext(SortingContext);
 
   const renderAlgorithmSelect = () => (
     <Label>
       Algorithm
       <Select
         value={config.algorithm}
-        name="algorithm"
         onChange={e => config.setAlgorithm(e.target.value)}
       >
         <option value={"Bubble Sort"}>Bubble Sort</option>
@@ -24,7 +23,6 @@ const SortingOptionsTab = ({ closeTab }) => {
       Speed
       <Select
         value={config.interval}
-        name="speed"
         onChange={e => config.setSortingInterval(e.target.value)}
       >
         <option value={300}>Slow</option>
@@ -41,7 +39,6 @@ const SortingOptionsTab = ({ closeTab }) => {
       Count
       <Select
         value={config.arraySize}
-        name="count"
         onChange={e => config.setArraySize(e.target.value)}
       >
         <option value={10}>10</option>
@@ -52,11 +49,25 @@ const SortingOptionsTab = ({ closeTab }) => {
     </Label>
   );
 
+  const renderAnimationSelect = () => (
+    <Label>
+      Animation
+      <Select
+        value={config.smoothAnimation}
+        onChange={e => config.setSmoothAnimation(e.target.value)}
+      >
+        <option value={true}>Smooth</option>
+        <option value={false}>None</option>
+      </Select>
+    </Label>
+  );
+
   return (
     <form>
       {renderAlgorithmSelect()}
       {renderCountSelect()}
       {renderIntervalSelect()}
+      {renderAnimationSelect()}
     </form>
   );
 };

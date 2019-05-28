@@ -19,7 +19,7 @@ export const Bar = styled.div`
   border: 1px solid ${({ barBorderColor }) => barBorderColor};
   border-radius: 1px 1px 0 0;
   margin-top: auto;
-  transition: ${({ transition }) => transition && "background-color .6s"};
+  transition: background-color 0.5s;
   height: ${({ height }) => (height ? height : "50%")};
   width: ${({ width }) => (width ? width : "10%")};
   background: linear-gradient(
@@ -30,8 +30,8 @@ export const Bar = styled.div`
   ${({ selected, selectedColor }) =>
     selected &&
     `background: ${selectedColor};
-    border: none;
-  `}
+      border: none;
+    `}
   @media (max-width: 900px) {
     margin-right: 2px;
   }

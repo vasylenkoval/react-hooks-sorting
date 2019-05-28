@@ -18,6 +18,7 @@ font-size: 3rem;
 cursor: pointer;
 border-radius: 15%;
 width: 100%;
+position: relative;
 transition: transform .1s, color .1s;
 /* Enable hover only for desktop */
   @media (min-width: 1100px) {
