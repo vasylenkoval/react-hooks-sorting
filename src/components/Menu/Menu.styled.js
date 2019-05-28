@@ -100,17 +100,20 @@ export const ExpandedMenu = styled.div`
   left: 10%;
   bottom: 5%;
   right: 60%;
-  transition: right 0.15s ease-out;
+  transition: width 0.15s ease-out, right 0.15s ease-out;
   position: fixed;
   border-radius: 0 5px 5px 0;
   box-shadow: 25px 0 20px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   overflow-y: scroll;
   white-space: nowrap;
-  ${({ isExpanded }) =>
-    isExpanded ? "min-width: 300px;" : "right: 90%; box-shadow: none;"}
+  ${({ isExpanded }) => !isExpanded && "right: 90%; box-shadow: none;"}
 
   /* Mobile Styles */
+  @media (max-width: 900px) {
+    ${({ isExpanded }) => isExpanded && "right: 50%;"}
+  }
+
   @media (max-width: 560px) {
     top: 20%;
     right: 2%;
@@ -119,7 +122,7 @@ export const ExpandedMenu = styled.div`
     border-radius: 5px 5px 0 0;
     transition: top 0.15s ease-out;
 
-    ${({ isExpanded }) => (isExpanded ? "" : "top: 90%; box-shadow: none;")}
+    ${({ isExpanded }) => !isExpanded && "top: 90%; box-shadow: none;"}
   }
 `;
 
