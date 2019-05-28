@@ -14,6 +14,7 @@ const SortingOptionsTab = ({ closeTab }) => {
       >
         <option value={"Bubble Sort"}>Bubble Sort</option>
         <option value={"Insertion Sort"}>Insertion Sort</option>
+        <option value={"Selection Sort"}>Selection Sort</option>
       </Select>
     </Label>
   );

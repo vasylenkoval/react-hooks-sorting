@@ -6,13 +6,15 @@ const insertionSort = array => {
   for (let i = 1; i < len; i++) {
     let key = arr[i];
     let j = i - 1;
+    let temp;
     while (j >= 0 && arr[j].value > key.value) {
-      arr[j + 1] = {
-        ...arr[j],
-        selected: true
-      };
+      //Do swap with a temp to prevent two duplicate entries to appear at any point
+      temp = arr[j + 1];
+      arr[j + 1] = { ...arr[j], selected: true };
+      arr[j] = temp;
+      //save snapshot
       sortingHistory.push([...arr]);
-      arr[j + 1] = { ...arr[j], selected: false };
+      arr[j + 1] = { ...arr[j + 1], selected: false };
       j = j - 1;
     }
 

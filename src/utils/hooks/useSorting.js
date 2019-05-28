@@ -3,7 +3,7 @@ import { createRandomArr } from "utils/helpers";
 import sortingAlgorithms from "utils/sorting/sortingAlgorithms";
 
 const useSorting = () => {
-  const [algorithm, setAlgorithm] = useState("Insertion Sort");
+  const [algorithm, setAlgorithm] = useState("Selection Sort");
   const [arraySize, setArraySize] = useState(25);
   const [interval, setSortingInterval] = useState(200);
   const [currentArray, setCurrentArray] = useState(createRandomArr(arraySize));
