@@ -6,11 +6,13 @@ const useSorting = defaults => {
   const [algorithm, setAlgorithm] = useState(defaults.algorithm);
   const [arraySize, setArraySize] = useState(defaults.arraySize);
   const [interval, setSortingInterval] = useState(defaults.interval);
-  const [currentArray, setCurrentArray] = useState(createRandomArr(arraySize));
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [isMuted, setIsMuted] = useState(defaults.isMuted);
   const [smoothAnimation, setSmoothAnimation] = useState(true);
+  const [currentArray, setCurrentArray] = useState(() =>
+    createRandomArr(arraySize)
+  );
 
   // Shuffles the array
   const shuffle = useCallback(() => {
@@ -19,17 +21,16 @@ const useSorting = defaults => {
   }, [arraySize]);
 
   const stop = useCallback(() => {
-    // set a fake timeout to get the highest timeout id and clear all timeouts that come before
+    // sets a fake timeout to get the highest timeout id and clear all timeouts that come before
     let timeoutId = setTimeout(() => null, 0);
     while (timeoutId >= 0) {
       clearTimeout(timeoutId);
       timeoutId--;
     }
-    //stop sorting and create new shuffled array
     setIsSorting(false);
   }, []);
 
-  //Stops and Shuffles the array if user triggered arraySize change
+  //Stops and shuffles the array if user triggered a change in the dependencies
   useEffect(() => {
     stop();
     shuffle();

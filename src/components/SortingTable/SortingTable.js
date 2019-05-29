@@ -12,31 +12,32 @@ const SortingTable = () => {
   const [isAnimating, setIsAnimating] = useState(config.smoothAnimation);
 
   const renderArray = () =>
-    array.currentArray.map(
-      ({ value, selected, emitSound, transition }, index) => {
-        if (emitSound && !config.isMuted) {
-          playSound();
-        }
-        return (
-          <Flipped key={index} flipId={value} shouldFlip={() => isAnimating}>
-            <Bar
-              key={value}
-              selected={selected}
-              height={`${(value / array.currentArray.length) * 90}%`}
-              width={`${100 / array.currentArray.length}%`}
-              barTopColor={colors.barTop}
-              barBottomColor={colors.barBottom}
-              barBorderColor={colors.barBorder}
-              selectedColor={colors.selectedBar}
-            />
-          </Flipped>
-        );
+    array.currentArray.map(({ value, selected, emitSound }, index) => {
+      if (emitSound && !config.isMuted) {
+        playSound();
       }
-    );
+      return (
+        <Flipped key={index} flipId={value} shouldFlip={() => isAnimating}>
+          <Bar
+            key={value}
+            selected={selected}
+            height={`${(value / array.currentArray.length) * 90}%`}
+            width={`${100 / array.currentArray.length}%`}
+            barTopColor={colors.barTop}
+            barBottomColor={colors.barBottom}
+            barBorderColor={colors.barBorder}
+            selectedColor={colors.selectedBar}
+          />
+        </Flipped>
+      );
+    });
 
   return (
     <Flipper spring="stiff" flipKey={JSON.stringify(array.currentArray)}>
-      <Table onClick={() => setIsAnimating(!isAnimating)}>
+      <Table
+        onClick={() => setIsAnimating(!isAnimating)}
+        backgroundColor={colors.background}
+      >
         <Title>Sorting algorithm:</Title>
         <AlgorithmName>{config.algorithm}</AlgorithmName>
         {renderArray()}

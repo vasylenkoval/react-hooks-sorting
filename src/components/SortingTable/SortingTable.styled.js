@@ -8,7 +8,7 @@ export const Table = styled.div`
   right: 2%;
   top: 5%;
   bottom: 5%;
-  background-color: #27293d;
+  background-color: ${({ backgroundColor }) => backgroundColor};
   padding: 30px;
   border-radius: 5px;
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);

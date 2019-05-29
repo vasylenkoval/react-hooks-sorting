@@ -28,22 +28,21 @@ const Menu = () => {
           }}
         />
       );
-    else
-      return (
-        <Icons.Play
-          onClick={() => {
-            actions.start();
-            closeTab();
-          }}
-        />
-      );
+    return (
+      <Icons.Play
+        onClick={() => {
+          actions.start();
+          closeTab();
+        }}
+      />
+    );
   };
 
   //Switching between Muted and Unmuted buttons
   const renderSoundControls = () => {
     if (config.isMuted)
       return <Icons.SoundOff onClick={() => config.setIsMuted(false)} />;
-    else return <Icons.SoundOn onClick={() => config.setIsMuted(true)} />;
+    return <Icons.SoundOn onClick={() => config.setIsMuted(true)} />;
   };
 
   //Showing a correct tab

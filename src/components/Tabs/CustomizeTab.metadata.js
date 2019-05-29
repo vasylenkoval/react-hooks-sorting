@@ -60,5 +60,10 @@ export const labels = [
     name: "Sorting Bar Border Color",
     handler: "setBarBorder",
     stateName: "barBorder"
+  },
+  {
+    name: "Sorting Table Background",
+    handler: "setBackground",
+    stateName: "background"
   }
 ];
