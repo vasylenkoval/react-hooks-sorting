@@ -14,17 +14,23 @@ const ContactTab = () => {
       </Text>
       <a
         target="_blank"
+        rel="noopener noreferrer"
         href="https://github.com/vasylenkoval/react-hooks-sorting"
       >
         <SocialIcons.Github />
       </a>
       <a
         target="_blank"
+        rel="noopener noreferrer"
         href="https://www.linkedin.com/in/valentyn-vasylenko-bb36aa90/"
       >
         <SocialIcons.Linkedin />
       </a>
-      <a target="_blank" href="https://twitter.com/valvasylenko_">
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://twitter.com/valvasylenko_"
+      >
         <SocialIcons.Twitter />
       </a>
     </>

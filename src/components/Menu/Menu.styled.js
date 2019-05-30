@@ -82,7 +82,7 @@ export const MenuBody = styled.div`
 
   /* Mobile Styles */
   @media (max-width: 560px) {
-    top: 85%;
+    top: 87.5%;
     right: 2%;
     bottom: 2%;
     align-items: center;
@@ -118,7 +118,7 @@ export const ExpandedMenu = styled.div`
     top: 20%;
     right: 2%;
     left: 2%;
-    bottom: 15%;
+    bottom: 12.3%;
     border-radius: 5px 5px 0 0;
     transition: top 0.15s ease-out;
 

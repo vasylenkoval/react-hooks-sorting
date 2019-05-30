@@ -15,7 +15,7 @@ export const Table = styled.div`
 
   /* Mobile Styles */
   @media (max-width: 560px) {
-    bottom: 16.5%;
+    bottom: 13.5%;
     left: 2%;
     top: 2%;
   }

@@ -24,6 +24,7 @@ const Menu = () => {
     if (checkIfMobile()) {
       setIsMobile(true);
       config.setIsMuted(true);
+      config.setArraySize(10);
     }
   }, [config, config.setIsMuted, setIsMobile]);
 
