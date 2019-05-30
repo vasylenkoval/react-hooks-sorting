@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Select, Label, Button } from "styles/reusableStyles";
+import React, { useContext } from "react";
+import { Select, Label } from "styles/reusableStyles";
 import SortingContext from "context/Sorting";
 
 const SortingOptionsTab = ({ closeTab }) => {

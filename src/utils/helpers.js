@@ -1,4 +1,4 @@
-//Creates an array of random sorting objects of a passed size
+/* Creates an array of random sorting objects of a passed size */
 export const createRandomArr = size => {
   let arr = [];
   for (let i = 1; i <= size; i++) {
@@ -16,7 +16,6 @@ export const createRandomArr = size => {
 
 /* Generates an object containing all of the icons wrapped by styled components, accepts four arguments: array of icons, array of strings for the icons names (order matters), string containing the styles to be applied and 'styled' callback function from styled-components library
  */
-
 export const styleIcons = (icons, names, styles, styled) => {
   return icons.reduce((acc, icon, index) => {
     acc[names[index]] = styled(icon)`
@@ -24,4 +23,11 @@ export const styleIcons = (icons, names, styles, styled) => {
     `;
     return acc;
   }, {});
+};
+
+/* Tries to detect if user is using a mobile device (not 100% reliable)*/
+export const checkIfMobile = () => {
+  const userAgents = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  if (userAgents.test(navigator.userAgent)) return true;
+  return false;
 };

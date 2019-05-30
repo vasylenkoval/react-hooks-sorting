@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { checkIfMobile } from "utils/helpers";
 import {
   MenuBody,
   Icons,
@@ -14,8 +15,17 @@ import SortingContext from "context/Sorting";
 import useExpandedTabs from "hooks/useExpandedTabs";
 
 const Menu = () => {
+  const [isMobile, setIsMobile] = useState(false);
   const { array, actions, config } = useContext(SortingContext);
   const { isExpanded, currentTab, toggleTab, closeTab } = useExpandedTabs();
+
+  //Detects if user is using a mobile device and disables audio
+  useEffect(() => {
+    if (checkIfMobile()) {
+      setIsMobile(true);
+      config.setIsMuted(true);
+    }
+  }, [config, config.setIsMuted, setIsMobile]);
 
   //Switching between Play, Stop and Shuffle buttons
   const renderPlayControls = () => {
@@ -41,6 +51,7 @@ const Menu = () => {
 
   //Switching between Muted and Unmuted buttons
   const renderSoundControls = () => {
+    if (isMobile) return null;
     if (config.isMuted)
       return <Icons.SoundOff onClick={() => config.setIsMuted(false)} />;
     return <Icons.SoundOn onClick={() => config.setIsMuted(true)} />;

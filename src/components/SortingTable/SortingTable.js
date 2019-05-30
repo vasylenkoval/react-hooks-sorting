@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Table, Bar, Title, AlgorithmName } from "./SortingTable.styled";
 import { Flipper, Flipped } from "react-flip-toolkit";
 import { playSound } from "utils/sound/sound";
