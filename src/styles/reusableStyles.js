@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import { styleIcons } from "utils/helpers";
+import {
+  TiSocialGithub,
+  TiSocialTwitter,
+  TiSocialLinkedin
+} from "react-icons/ti";
 
-//Inputs
 export const Select = styled.select`
   -webkit-appearance: button;
   -moz-appearance: button;
@@ -61,3 +66,35 @@ export const Text = styled.p`
   display: block;
   width: ${({ expandedText }) => (expandedText ? "25vw" : "100%")};
 `;
+
+// Social Media Icons
+//Styles to be applied to all imported social media icons
+const socialIconsStyles = `
+color: white;
+font-size: 3rem;
+cursor: pointer;
+border-radius: 15%;
+position: relative;
+transition: transform .1s, color .1s;
+/* Enable hover only for desktop */
+  @media (min-width: 1100px) {
+    cursor: pointer;
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: lightgrey;
+      }
+    }
+  }
+&:active {
+  color: rgba(180, 180, 180);
+  transform: scale(0.9);
+}
+`;
+
+//Wrapping imported icons with styled components and saving it on an object
+export const SocialIcons = styleIcons(
+  [TiSocialGithub, TiSocialTwitter, TiSocialLinkedin],
+  ["Github", "Twitter", "Linkedin"],
+  socialIconsStyles,
+  styled
+);
