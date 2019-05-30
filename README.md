@@ -1,6 +1,7 @@
 # React-hooks-sorting
 
 Sorting algorithms visualization using react
+![Insertion Sort in action](https://media.giphy.com/media/U246I0ACAtgYA3sz0G/giphy.gif)
 
 ## Getting Started
 
@@ -23,13 +24,10 @@ Sorting algorithms visualization using react
 
 So far only 3 algorithms are implemented, but I am working on adding more soon!
 
-## Gifs
-
-Sorting (Insertion Sort)
-![Insertion Sort in action](http://www.giphy.com/gifs/U246I0ACAtgYA3sz0G)
+## More Gifs
 
 UI Customization
-![Customization of UI](http://www.giphy.com/gifs/ZZl8XmJG0s3mVtmlsI)
+![Customization of UI](https://media.giphy.com/media/ZZl8XmJG0s3mVtmlsI/giphy.gif)
 
 It's responsive too!
-![Mobile](http://www.giphy.com/gifs/Zd0Nd1HO6gXBhI3xCS)
+![Mobile](https://media.giphy.com/media/Zd0Nd1HO6gXBhI3xCS/giphy.gif)
