@@ -75,6 +75,7 @@ export const MenuBody = styled.div`
   background: linear-gradient(0deg, #3358f4, #1d8cf8);
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   padding: 5% 2%;
   outline: none;
