@@ -2,6 +2,8 @@
 
 Sorting algorithms visualization using react
 
+[Check it out live](https://vasylenkoval.github.io/react-hooks-sorting/)
+
 ![Insertion Sort in action](https://media.giphy.com/media/U246I0ACAtgYA3sz0G/giphy.gif)
 
 ## Getting Started
