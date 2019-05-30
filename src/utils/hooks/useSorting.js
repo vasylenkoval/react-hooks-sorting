@@ -9,7 +9,7 @@ const useSorting = defaults => {
   const [isSorting, setIsSorting] = useState(false);
   const [isSorted, setIsSorted] = useState(false);
   const [isMuted, setIsMuted] = useState(defaults.isMuted);
-  const [smoothAnimation, setSmoothAnimation] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(true);
   const [currentArray, setCurrentArray] = useState(() =>
     createRandomArr(arraySize)
   );
@@ -73,8 +73,8 @@ const useSorting = defaults => {
       setSortingInterval,
       isMuted,
       setIsMuted,
-      smoothAnimation,
-      setSmoothAnimation
+      isAnimating,
+      setIsAnimating
     }
   };
 };

@@ -52,3 +52,12 @@ export const Button = styled.button`
     background: lightgrey;
   }
 `;
+
+export const Text = styled.p`
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 300;
+  margin-bottom: 20px;
+  display: block;
+  width: ${({ expandedText }) => (expandedText ? "25vw" : "100%")};
+`;

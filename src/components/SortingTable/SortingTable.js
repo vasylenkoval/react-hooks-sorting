@@ -9,7 +9,8 @@ const SortingTable = () => {
   const { array, config } = useContext(SortingContext);
   const { colors } = useContext(ThemeContext);
 
-  const [isAnimating, setIsAnimating] = useState(config.smoothAnimation);
+  // const [isAnimating, setIsAnimating] = useState(config.smoothAnimation);
+  const isAnimating = config.isAnimating;
 
   const renderArray = () =>
     array.currentArray.map(({ value, selected, emitSound }, index) => {
@@ -35,7 +36,7 @@ const SortingTable = () => {
   return (
     <Flipper spring="stiff" flipKey={JSON.stringify(array.currentArray)}>
       <Table
-        onClick={() => setIsAnimating(!isAnimating)}
+        // onClick={() => setIsAnimating(!isAnimating)}
         backgroundColor={colors.background}
       >
         <Title>Sorting algorithm:</Title>

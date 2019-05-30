@@ -106,7 +106,6 @@ export const ExpandedMenu = styled.div`
   box-shadow: 25px 0 20px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   overflow-y: scroll;
-  white-space: nowrap;
   ${({ isExpanded }) => !isExpanded && "right: 90%; box-shadow: none;"}
 
   /* Mobile Styles */
@@ -137,6 +136,7 @@ export const ExpandedTitle = styled.h3`
 
 export const ExpandedContent = styled.div`
   padding: 80px 30px 30px 30px;
+  overflow: hidden;
 `;
 
 export const Backdrop = styled.div`

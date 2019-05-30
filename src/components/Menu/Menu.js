@@ -9,6 +9,7 @@ import {
 } from "./Menu.styled";
 import SortingOptionsTab from "../Tabs/SortingOptionsTab";
 import CustomizeTab from "../Tabs/CustomizeTab";
+import ContactTab from "../Tabs/ContactTab";
 import SortingContext from "context/Sorting";
 import useExpandedTabs from "utils/hooks/useExpandedTabs";
 
@@ -51,6 +52,7 @@ const Menu = () => {
       <ExpandedContent>
         {tab === "Sorting Options" && <SortingOptionsTab closeTab={closeTab} />}
         {tab === "Customize" && <CustomizeTab closeTab={closeTab} />}
+        {tab === "Contact Me" && <ContactTab closeTab={closeTab} />}
       </ExpandedContent>
     );
   };
