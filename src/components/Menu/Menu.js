@@ -19,14 +19,15 @@ const Menu = () => {
   const { array, actions, config } = useContext(SortingContext);
   const { isExpanded, currentTab, toggleTab, closeTab } = useExpandedTabs();
 
-  //Detects if user is using a mobile device and disables audio
+  //Detects if user is using a mobile device and disables audio and reduces the default array count
   useEffect(() => {
     if (checkIfMobile()) {
       setIsMobile(true);
       config.setIsMuted(true);
       config.setArraySize(10);
     }
-  }, [config, config.setIsMuted, setIsMobile]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   //Switching between Play, Stop and Shuffle buttons
   const renderPlayControls = () => {
