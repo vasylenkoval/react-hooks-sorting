@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "46afee7345a4898562457222cafb8fa2",
+    "revision": "bbe790be4ea1718db2e10dd8d0d2cfe2",
     "url": "/react-hooks-sorting/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-hooks-sorting/static/js/2.5e256f2b.chunk.js"
   },
   {
-    "revision": "266e67bbb1f4d64dc362",
-    "url": "/react-hooks-sorting/static/js/main.1fc8514e.chunk.js"
+    "revision": "40ae05e706fc24d952b4",
+    "url": "/react-hooks-sorting/static/js/main.e8375225.chunk.js"
   },
   {
     "revision": "5494e8a5eb87ab25e4fe",
