@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Table, Bar, Title, AlgorithmName } from "./SortingTable.styled";
 import { Flipper, Flipped } from "react-flip-toolkit";
 import { playSound } from "utils/sound/sound";
@@ -9,16 +9,17 @@ const SortingTable = () => {
   const { array, config } = useContext(SortingContext);
   const { colors } = useContext(ThemeContext);
 
-  // const [isAnimating, setIsAnimating] = useState(config.smoothAnimation);
-  const isAnimating = config.isAnimating;
-
   const renderArray = () =>
     array.currentArray.map(({ value, selected, emitSound }, index) => {
       if (emitSound && !config.isMuted) {
         playSound();
       }
       return (
-        <Flipped key={index} flipId={value} shouldFlip={() => isAnimating}>
+        <Flipped
+          key={index}
+          flipId={value}
+          shouldFlip={() => config.isAnimating}
+        >
           <Bar
             key={value}
             selected={selected}
@@ -35,10 +36,7 @@ const SortingTable = () => {
 
   return (
     <Flipper spring="stiff" flipKey={JSON.stringify(array.currentArray)}>
-      <Table
-        // onClick={() => setIsAnimating(!isAnimating)}
-        backgroundColor={colors.background}
-      >
+      <Table backgroundColor={colors.background}>
         <Title>Sorting algorithm:</Title>
         <AlgorithmName>{config.algorithm}</AlgorithmName>
         {renderArray()}

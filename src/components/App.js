@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SortingTable from "./SortingTable/SortingTable";
-import useSorting from "utils/hooks/useSorting";
-import useTheme from "utils/hooks/useTheme";
+import useSorting from "hooks/useSorting";
+import useTheme from "hooks/useTheme";
 import ThemeContext from "context/Theme";
 import SortingContext from "context/Sorting";
 import Menu from "./Menu/Menu";

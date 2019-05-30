@@ -55,7 +55,7 @@ const SortingOptionsTab = ({ closeTab }) => {
       Animation
       <Select
         value={config.smoothAnimation}
-        onChange={e => config.setIsAnimating(e.target.value)}
+        onChange={e => config.setAnimating(e.target.value)}
       >
         <option value={true}>Smooth</option>
         <option value={false}>None</option>

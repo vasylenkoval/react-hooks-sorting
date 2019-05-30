@@ -7,7 +7,7 @@ import {
   DropdownLabel
 } from "./CustomizeTab.styled";
 import { colorsArr, labels } from "./CustomizeTab.metadata";
-import useExpandedTabs from "utils/hooks/useExpandedTabs";
+import useExpandedTabs from "hooks/useExpandedTabs";
 import ThemeContext from "context/Theme";
 
 const CustomizeTab = () => {

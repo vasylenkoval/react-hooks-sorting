@@ -53,6 +53,12 @@ const useSorting = defaults => {
     }
   };
 
+  //Making sure that animations apply correctly (options cannot return bool)
+  const setAnimating = value => {
+    if (value === "false") return setIsAnimating(false);
+    return setIsAnimating(true);
+  };
+
   return {
     array: {
       currentArray,
@@ -74,7 +80,7 @@ const useSorting = defaults => {
       isMuted,
       setIsMuted,
       isAnimating,
-      setIsAnimating
+      setAnimating
     }
   };
 };

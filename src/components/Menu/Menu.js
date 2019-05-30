@@ -11,7 +11,7 @@ import SortingOptionsTab from "../Tabs/SortingOptionsTab";
 import CustomizeTab from "../Tabs/CustomizeTab";
 import ContactTab from "../Tabs/ContactTab";
 import SortingContext from "context/Sorting";
-import useExpandedTabs from "utils/hooks/useExpandedTabs";
+import useExpandedTabs from "hooks/useExpandedTabs";
 
 const Menu = () => {
   const { array, actions, config } = useContext(SortingContext);
