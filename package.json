@@ -2,7 +2,7 @@
   "name": "react-hooks-sorting",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vasylenkoval.github.io/sorting-visualization",
+  "homepage": "https://vasylenkoval.github.io/react-hooks-sorting",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
